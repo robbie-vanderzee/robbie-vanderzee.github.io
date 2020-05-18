@@ -15,13 +15,12 @@ body {
 }
 
 @font-face {
-    font-family: 'Valorant';
-    src: url('/assets/fonts/Valorant/Valorant.woff2') format('woff2'),
-         url('/assets/fonts/Valorant/Valorant.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Valorant';
+  src: url('/assets/fonts/Valorant/Valorant.woff2') format('woff2'),
+    url('/assets/fonts/Valorant/Valorant.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
-
 
 /* font-size f(x) = 1/phi^2 (x-1) + phi [rem] */
 h6 {
@@ -191,7 +190,7 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
-  gap: 0px 1.618rem;
+  gap: 0px 4.24rem;
   grid-template-areas: ". . . . .";
   grid-area: footer-social;
 }
@@ -357,6 +356,18 @@ a.header-info-link {
 .footer-social {
   fill: #debe22;
 }
+
+/* Water filling animation here */
+/* */
+#linkedin, #github, #facebook, #twitter, #google path {
+  fill: #debe22;
+}
+
+#linkedin:hover, #github:hover, #facebook:hover, #twitter:hover, #google:hover path {
+  transition: fill 618ms ease-in-out;
+  fill: #000000;
+}
+
 h2.title {
   font-family: Valorant;
 }
@@ -369,4 +380,9 @@ img.signature {
   padding-top: 3.82%;
   padding-bottom: 3.82%;
   width: 100%;
+}
+
+a:active, a:focus {
+  outline: 0;
+  border: none;
 }
