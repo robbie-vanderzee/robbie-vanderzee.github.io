@@ -9,10 +9,19 @@ body,
 html,
 body {
   width: 100%;
-  font-family: "Dense", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "Roboto", "Valorant", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 1em;
   line-height: 1.618;
 }
+
+@font-face {
+    font-family: 'Valorant';
+    src: url('/assets/fonts/Valorant/Valorant.woff2') format('woff2'),
+         url('/assets/fonts/Valorant/Valorant.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 /* font-size f(x) = 1/phi^2 (x-1) + phi [rem] */
 h6 {
@@ -57,6 +66,7 @@ h1 {
   z-index: 101;
   grid-area: header;
   background-color: rgba(255, 255, 255, 0.382);
+  font-family: valorant;
 }
 
 .header-left {
@@ -314,13 +324,14 @@ blockquote.text {
 
 a.nav {
   display: block;
-  font-size: 0.618rem;
+  font-size: 1rem;
   margin-top: 1.618em;
   margin-bottom: 1.618em;
   margin-left: 0;
   margin-right: 0;
   font-weight: 400;
   line-height: 1.618;
+  font-family: valorant;
 }
 
 a.button {
@@ -336,6 +347,7 @@ a.header-nav-link {
 }
 
 a.header-info-link {
+  font-family: "Valorant";
   color: black;
   text-decoration: none;
   justify-self: center;
