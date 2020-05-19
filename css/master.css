@@ -57,6 +57,7 @@ h1 {
 
 .header {
   display: grid;
+  height: 6.85rem;
   grid-template-columns: 0.146fr 0.00502fr 1.618fr 0.146fr;
   grid-template-rows: 1fr;
   gap: 0 0;
@@ -254,9 +255,31 @@ h1 {
 .button.nav {
   position: relative;
   display: block;
+  opacity: 0.618;
   width: 23.6%;
   height: 100%;
   left: 61.8%;
+  transition-duration: 382ms;
+  transition-property: transform;
+}
+
+.button.nav:hover {
+  opacity: 1;
+  color: black;
+  transform: scale(1.618);
+}
+
+.button.nav:hover .scramble {
+  opacity: 1;
+  color: black;
+}
+
+.scramble {
+  opacity: 0;
+}
+
+.scramble:hover {
+  transform: scale(2);
 }
 
 .section.nav.sticky {
@@ -355,12 +378,13 @@ a.header-info-link {
 
 .footer-social {
   fill: #debe22;
+  padding-top: 3.82%;
 }
 
 /* Water filling animation here */
 /* */
 #linkedin, #github, #facebook, #twitter, #google path {
-  fill: #debe22;
+  color: #debe22;
 }
 
 #linkedin:hover, #github:hover, #facebook:hover, #twitter:hover, #google:hover path {
@@ -378,11 +402,22 @@ h2.title {
 
 img.signature {
   padding-top: 3.82%;
-  padding-bottom: 3.82%;
   width: 100%;
 }
 
 a:active, a:focus {
   outline: 0;
   border: none;
+}
+
+.divider {
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(222, 190, 34, 0.75), rgba(0, 0, 0, 0));
+}
+
+div.paragraph {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 300;
 }

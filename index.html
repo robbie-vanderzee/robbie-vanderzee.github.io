@@ -11,11 +11,17 @@
   <!-- styling !-->
   <link rel="stylesheet" href="/css/master.css">
   <!-- extern !-->
+  <link rel="stylesheet" href="highlightjs/default.css">
   <!-- google !-->
   <!-- fonts !-->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   <!-- script !-->
-  <script src="js/main.js"></script>
+  <script src="js/master.js"></script>
+  <script src="highlightjs/highlight.pack.js"></script>
+  <!-- init !-->
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
 </head>
 
 <body>
@@ -71,15 +77,15 @@
       <nav class="nav">
         <div class="section nav sticky">
           <a href="#" class="button nav">
-            <span>/self <br>
+            <span class="scramble">/self <br>
               <sub> May 20th, 2020 </sub>
             </span>
           </a>
           <a href="#" class="button nav">
-            <span>/etc <br><sub> May 29th, 2020 </sub></span>
+            <span class="scramble">/etc <br><sub> May 29th, 2020 </sub></span>
           </a>
           <a href="#" class="button nav">
-            <span>/env <br><sub> July 11th, 2020 </sub> </span>
+            <span class="scramble">/env <br><sub> July 11th, 2020 </sub> </span>
           </a>
         </div>
       </nav>
@@ -100,8 +106,38 @@
               This is a quote, text-style, with a golden border made for articles. This will include relevant asides and external information.
             </blockquote>
             <div class="paragraph">
-              <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+              Ut imperdiet tellus quam, non venenatis odio tempus ac. Sed accumsan id ex vel dapibus. Maecenas at porttitor ante. Quisque in varius neque. Nulla placerat quis nibh suscipit posuere. Curabitur urna purus, faucibus et scelerisque ut,
+              ullamcorper et nisl. Cras lacinia congue sem, pretium interdum ipsum semper non. Donec porttitor mollis libero, et rhoncus arcu dignissim imperdiet. Mauris vitae commodo purus, id sollicitudin massa. Morbi risus ipsum, feugiat sed eros
+              nec, varius tempus neque. Proin auctor semper leo at consectetur. Pellentesque convallis feugiat lacus id tincidunt. Ut rutrum non lacus sed cursus. Nam tellus urna, rutrum nec posuere in, fringilla ultrices felis. Quisque tincidunt
+              dictum nunc ac vestibulum.
+              Nam consequat vitae magna in imperdiet. Suspendisse massa urna, ullamcorper at leo vitae, feugiat commodo ligula. Morbi viverra ultricies eros, ut ultricies ligula volutpat non. Donec sagittis, ligula ac blandit dictum, mauris sapien
+              iaculis felis, nec egestas lacus est euismod erat. Quisque quis metus blandit, ullamcorper nibh id, mollis arcu. Vestibulum semper placerat ex id mattis. Nullam non posuere libero. Morbi dapibus eget diam vitae maximus. Vivamus nec
+              vehicula tortor. Sed in velit dignissim, gravida ante at, faucibus enim. Nullam magna nisl, venenatis in urna at, egestas laoreet lectus. Integer mi ipsum, dictum at tincidunt non, euismod et elit. Donec sed arcu egestas, egestas enim
+              eu, lobortis nisl. Mauris nec porta purus. Aliquam facilisis ante sit amet ultricies iaculis. Phasellus condimentum mollis turpis et ultrices.
             </div>
+            <hr class="divider">
+            <div class="paragraph">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut velit at ante eleifend ornare. Maecenas ut imperdiet tortor, eu fringilla nisi. Phasellus fermentum erat sit amet mi ultrices accumsan eget ac elit. Vivamus volutpat, urna
+              sit amet egestas fermentum, purus ligula gravida nunc, vitae convallis urna elit bibendum erat. Nulla facilisi. Nullam et leo congue, ultrices nulla posuere, mattis urna. Vestibulum vel felis id dui ornare finibus. Mauris nec metus non
+              massa interdum laoreet fermentum id magna. Pellentesque auctor consequat pellentesque. Pellentesque tincidunt orci venenatis leo molestie, sit amet volutpat quam interdum. Aenean diam purus, varius sed turpis ac, fringilla feugiat
+              felis.
+              Sed at rhoncus elit. Nunc mattis accumsan magna in scelerisque. Curabitur vestibulum sem quis consequat condimentum. Cras convallis ac diam ac laoreet. Integer urna arcu, finibus eu sem ac, efficitur dictum nisi. Donec sem sapien,
+              mollis sit amet diam ac, eleifend luctus risus. Vestibulum efficitur tempor ornare. Mauris euismod molestie diam a tincidunt. Suspendisse mi nunc, tincidunt a dictum vitae, sollicitudin eu lorem. Maecenas placerat aliquet elit.
+              Phasellus blandit justo ac viverra lobortis.
+            </div>
+            <div class="code-block">example code</div>
+            <pre><code class="language-c++">
+                template&lt;class fwd_it, class compare = std::less&lt;&gt;&gt;
+                void quick_sort(fwd_it first, fwd_it last, compare cmp = compare{})
+                {
+                    auto const n = std::distance(first, last);
+                    if (n &lt;= 1) return;
+                    auto const pivot = std::next(first, n / 2);
+                    std::nth_element(first, pivot, last, cmp);
+                    quick_sort(first, pivot, cmp);
+                    quick_sort(pivot, last, cmp);
+                }
+             </code></pre>
           </div>
           <div class="section footer author">
             <span> /init · May 16th, 2020 · /rsv </span>
@@ -131,33 +167,36 @@
             </div>
           </a>
           <a target="_blank" href="https://github.com/robbie-vanderzee">
-            <div class="github"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" id="github">
+            <div class="github">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" id="github">
                 <title>github</title>
                 <path
                   d="M16 0.395c-8.836 0-16 7.163-16 16 0 7.069 4.585 13.067 10.942 15.182 0.8 0.148 1.094-0.347 1.094-0.77 0-0.381-0.015-1.642-0.022-2.979-4.452 0.968-5.391-1.888-5.391-1.888-0.728-1.849-1.776-2.341-1.776-2.341-1.452-0.993 0.11-0.973 0.11-0.973 1.606 0.113 2.452 1.649 2.452 1.649 1.427 2.446 3.743 1.739 4.656 1.33 0.143-1.034 0.558-1.74 1.016-2.14-3.554-0.404-7.29-1.777-7.29-7.907 0-1.747 0.625-3.174 1.649-4.295-0.166-0.403-0.714-2.030 0.155-4.234 0 0 1.344-0.43 4.401 1.64 1.276-0.355 2.645-0.532 4.005-0.539 1.359 0.006 2.729 0.184 4.008 0.539 3.054-2.070 4.395-1.64 4.395-1.64 0.871 2.204 0.323 3.831 0.157 4.234 1.026 1.12 1.647 2.548 1.647 4.295 0 6.145-3.743 7.498-7.306 7.895 0.574 0.497 1.085 1.47 1.085 2.963 0 2.141-0.019 3.864-0.019 4.391 0 0.426 0.288 0.925 1.099 0.768 6.354-2.118 10.933-8.113 10.933-15.18 0-8.837-7.164-16-16-16z">
                 </path>
-              </svg></div>
+              </svg>
+            </div>
           </a>
-
           <a target="_blank" href="https://www.facebook.com/robbie.s.vanderzee/">
             <div class="facebook">
               <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" id="facebook">
                 <title>facebook</title>
                 <path d="M19 6h5v-6h-5c-3.86 0-7 3.14-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.542 0.458-1 1-1z"></path>
-              </svg></div>
+              </svg>
+            </div>
           </a>
-
           <a target="_blank" href="https://twitter.com/Roversee">
-            <div class="twitter"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" id="twitter">
+            <div class="twitter">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" id="twitter">
                 <title>twitter</title>
                 <path
                   d="M32 7.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z">
                 </path>
-              </svg></div>
+              </svg>
+            </div>
           </a>
-
-          <a target="_blank" href="mailto:a0590dsbnaiwhqwe-0adsb@gmail.com?subject=<name> <interest> <etc>">
-            <div class="google"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" id="google">
+          <a target="_blank" href="mailto:email@site.com?subject=removed">
+            <div class="google">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" id="google">
                 <title>google</title>
                 <path
                   d="M16.319 13.713v5.487h9.075c-0.369 2.356-2.744 6.9-9.075 6.9-5.463 0-9.919-4.525-9.919-10.1s4.456-10.1 9.919-10.1c3.106 0 5.188 1.325 6.375 2.469l4.344-4.181c-2.788-2.612-6.4-4.188-10.719-4.188-8.844 0-16 7.156-16 16s7.156 16 16 16c9.231 0 15.363-6.494 15.363-15.631 0-1.050-0.113-1.85-0.25-2.65l-15.113-0.006z">
