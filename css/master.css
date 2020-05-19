@@ -334,14 +334,17 @@ blockquote.text {
   padding: 1rem 1rem 1rem 1rem;
 }
 
+.right {
+  text-align: right;
+}
+
 .center {
   justify-self: center;
-  align-self: center;
   text-align: center;
 }
 
 .solid {
-  background-color: #debe20;
+  background-color: #debe22;
 }
 
 a.nav {
@@ -400,9 +403,12 @@ h2.title {
   font-weight: lighter;
 }
 
+img {
+  max-width: 100%;
+}
+
 img.signature {
   padding-top: 3.82%;
-  width: 100%;
 }
 
 a:active, a:focus {
@@ -411,13 +417,44 @@ a:active, a:focus {
 }
 
 .divider {
-	border: 0;
-	height: 1px;
-	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(222, 190, 34, 0.75), rgba(0, 0, 0, 0));
+  overflow: visible;
+  padding: 0;
+  border: none;
+  border-top: medium double #debe22;
+  color: #333;
+  text-align: center;
+}
+
+.divider::after {
+  content: "§";
+  display: inline-block;
+  position: relative;
+  top: -1.618rem;
+  font-size: 1.618rem;
+  padding: 0 1.618rem;
+  background: white;
+}
+
+hr {
+  margin: 1.618rem 0 1.618rem 0;
 }
 
 div.paragraph {
   font-family: inherit;
   font-size: 1rem;
+  font-weight: 300;
+}
+
+h3.title {
+  font-weight: 300;
+}
+
+.article {
+  font-family: valorant;
+  font-weight: 300;
+}
+
+.subtitle {
+  color: #757575;
   font-weight: 300;
 }
