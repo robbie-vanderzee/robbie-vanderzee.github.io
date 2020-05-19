@@ -417,22 +417,16 @@ a:active, a:focus {
 }
 
 .divider {
-  overflow: visible;
-  padding: 0;
   border: none;
-  border-top: medium double #debe22;
-  color: #333;
   text-align: center;
 }
 
-.divider::after {
-  content: "§";
-  display: inline-block;
-  position: relative;
-  top: -1.618rem;
-  font-size: 1.618rem;
-  padding: 0 1.618rem;
-  background: white;
+.divider::before {
+  content: "...";
+  letter-spacing: 1rem;
+  font-weight: 400;
+  font-size: 2.618rem;
+  color: #debe22;
 }
 
 hr {
