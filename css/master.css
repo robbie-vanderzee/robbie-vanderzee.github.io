@@ -336,11 +336,18 @@ blockquote.text {
 
 .right {
   text-align: right;
+  justify-self: right;
+  align-self: right;
 }
 
 .center {
   justify-self: center;
+  align-self: center;
   text-align: center;
+}
+
+.caption {
+  padding-bottom: 1rem;
 }
 
 .solid {
@@ -410,6 +417,7 @@ img {
 img.signature {
   padding-top: 3.82%;
 }
+.caption{}
 
 a:active, a:focus {
   outline: 0;
