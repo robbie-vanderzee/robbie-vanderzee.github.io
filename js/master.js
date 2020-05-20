@@ -1,7 +1,7 @@
 class TextScramble {
+  static chars = 'qwertyuiopasdfghjklzxcvbn'
   constructor(el) {
     this.el = el
-    this.chars = 'qwertyuiopasdfghjklzxcvbn'
     this.update = this.update.bind(this)
   }
   setText(newText) {
@@ -61,7 +61,7 @@ class TextScramble {
     }
   }
   randomChar() {
-    return this.chars[Math.floor(Math.random() * this.chars.length)]
+    return TextScramble.chars[Math.floor(Math.random() * TextScramble.chars.length)]
   }
 }
 
@@ -69,17 +69,17 @@ window.onload = function() {
 
   var scrambleparents = document.getElementsByClassName("scramble-container")
   for (let parent of scrambleparents) {
-    	f(parent)
+    f(parent)
   }
 
-  function f(x){
+  function f(x) {
     var scrambles = x.getElementsByClassName("scramble")
     var scramblers = new Map()
-    for(let scrambler of scrambles){
-        scramblers.set(new TextScramble(scrambler), scrambler.textContent)
+    for (let scrambler of scrambles) {
+      scramblers.set(new TextScramble(scrambler), scrambler.textContent)
     }
 
-    x.onmouseenter = function(){
+    x.onmouseenter = function() {
       for (let [scrambler, content] of scramblers) {
         scrambler.setText(content)
       }

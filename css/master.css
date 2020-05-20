@@ -47,7 +47,7 @@ h1 {
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1.618fr 1fr;
-  grid-template-rows: 0.0557fr 1fr 61.8vh;
+  grid-template-rows: 6.85rem 1fr 61.8vh;
   gap: 0px 0px;
   grid-template-areas: "header header header""body body body""footer footer footer";
 }
