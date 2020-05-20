@@ -1,23 +1,20 @@
-html,
-body,
-.grid-container {
+html, body, .grid-container {
   max-height: 100%;
   margin: auto;
   padding: 0;
 }
 
-html,
-body {
+html, body {
   width: 100%;
   font-family: "Roboto", "Valorant", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   font-size: 1em;
   line-height: 1.618;
+  scroll-behavior: smooth;
 }
 
 @font-face {
   font-family: 'Valorant';
-  src: url('/assets/fonts/Valorant/Valorant.woff2') format('woff2'),
-    url('/assets/fonts/Valorant/Valorant.woff') format('woff');
+  src: url('/assets/fonts/Valorant/Valorant.woff2') format('woff2'), url('/assets/fonts/Valorant/Valorant.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -50,7 +47,7 @@ h1 {
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1.618fr 1fr;
-  grid-template-rows: 0.0557fr 1.618fr 0.236fr;
+  grid-template-rows: 0.0557fr 1fr 61.8vh;
   gap: 0px 0px;
   grid-template-areas: "header header header""body body body""footer footer footer";
 }
@@ -64,9 +61,9 @@ h1 {
   overflow: hidden;
   grid-template-areas: "header-left divider header-middle header-right";
   z-index: 101;
-  grid-area: header;
   background-color: rgba(255, 255, 255, 0.382);
   font-family: valorant;
+  grid-area: header;
 }
 
 .header-left {
@@ -76,9 +73,7 @@ h1 {
   grid-area: header-left;
 }
 
-.hover-float:hover,
-.hover-float:focus,
-.hover-float:active {
+.hover-float:hover, .hover-float:focus, .hover-float:active {
   animation: hover-frames 382ms infinite alternate;
   animation-fill-mode: forwards;
   transition-property: transform;
@@ -99,9 +94,7 @@ h1 {
   transition-timing-function: ease-out;
 }
 
-.hover-underline-from-center:hover::before,
-.hover-underline-from-center:focus::before,
-.hover-underline-from-center:active::before {
+.hover-underline-from-center:hover::before, .hover-underline-from-center:focus::before, .hover-underline-from-center:active::before {
   left: 0;
   right: 0;
 }
@@ -153,7 +146,7 @@ h1 {
   position: relative;
   grid-template-columns: 1fr 1.618fr 1fr;
   grid-template-rows: 1fr;
-  gap: 0px 0px;
+  gap: 0 0;
   grid-template-areas: "nav section aside";
   grid-area: body;
 }
@@ -202,32 +195,30 @@ h1 {
 
 /* For presentation only, no need to copy the code below */
 /*.grid-container * {
-	border: 1px solid grey;
-	border-style: dashed;
-	position: relative
+     border: 1px solid grey;
+     border-style: dashed;
+     position: relative
 }
-*/
+ */
 /*.grid-container *::after {
-	position: absolute;
-	top: 0;
-	left: 0
+     position: absolute;
+     top: 0;
+     left: 0
 }
-*/
+ */
 /* */
-*,
-::after,
-::before {
+*, ::after, ::before {
   box-sizing: border-box;
 }
 
 /*nav.nav::before {
-	content: "";
-	position: absolute;
-	border-left: 1px solid #757575;
-	min-height: 100%;
-	margin-left: 16.1%
+     content: "";
+     position: absolute;
+     border-left: 1px solid #757575;
+     min-height: 100%;
+     margin-left: 16.1%
 }
-*/
+ */
 .header-nav-item {
   display: grid;
   position: relative;
@@ -269,16 +260,16 @@ h1 {
   transform: scale(1.618);
 }
 
-.button.nav:hover .scramble {
+.button.nav:hover .button-nav-item {
   opacity: 1;
   color: black;
 }
 
-.scramble {
+.button-nav-item {
   opacity: 0;
 }
 
-.scramble:hover {
+.button-nav-item:hover {
   transform: scale(2);
 }
 
@@ -336,8 +327,6 @@ blockquote.text {
 
 .right {
   text-align: right;
-  justify-self: right;
-  align-self: right;
 }
 
 .center {
@@ -386,6 +375,22 @@ a.header-info-link {
   align-self: center;
 }
 
+a:link {
+  color: inherit;
+}
+
+a:active {
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+}
+
 .footer-social {
   fill: #debe22;
   padding-top: 3.82%;
@@ -417,7 +422,8 @@ img {
 img.signature {
   padding-top: 3.82%;
 }
-.caption{}
+
+.caption {}
 
 a:active, a:focus {
   outline: 0;
@@ -459,4 +465,9 @@ h3.title {
 .subtitle {
   color: #757575;
   font-weight: 300;
+}
+
+#s000, #s001, #s002 {
+  padding-top: 4.24rem;
+  margin-top: -4.24rem;
 }
