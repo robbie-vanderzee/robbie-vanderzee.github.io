@@ -13,6 +13,7 @@ class TextScramble {
       const from = oldText[i] || ''
       const to = newText[i] || ''
       const start = i
+      // Theory: golden ratio randomness between golden logarithmic growth function
       const center = Math.floor(38.2 * Math.log(start + 2))
       const margin = Math.floor(38.2 * Math.log(start + 3)) - center
       const end = Math.floor(center) + Math.floor(margin * Math.random())
@@ -43,7 +44,7 @@ class TextScramble {
         complete++
         output += to
       } else if (this.frame >= start) {
-        if (!char || Math.random() < 0.11) {
+        if (!char || Math.random() < 0.146) {
           char = this.randomChar()
           this.queue[i].char = char
         }
@@ -65,6 +66,13 @@ class TextScramble {
   }
 }
 
+/*
+var mainNavLinks = document.getElementsByClassName("button nav")
+var mainSections = document.getElementsByClassName("body-section")
+console.log(mainNavLinks)
+console.log(mainSections)
+https://css-tricks.com/sticky-smooth-active-nav/
+*/
 window.onload = function() {
 
   var scrambleparents = document.getElementsByClassName("scramble-container")

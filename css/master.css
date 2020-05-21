@@ -343,6 +343,7 @@ blockquote.text {
   background-color: #debe22;
 }
 
+
 a.nav {
   display: block;
   font-size: 1rem;
@@ -356,8 +357,12 @@ a.nav {
 }
 
 a.button {
-  text-decoration: none;
   color: initial;
+  text-decoration: none;
+}
+
+a.button.nav {
+  min-width: 38.2%
 }
 
 a.header-nav-link {
@@ -373,22 +378,6 @@ a.header-info-link {
   text-decoration: none;
   justify-self: center;
   align-self: center;
-}
-
-a:link {
-  color: inherit;
-}
-
-a:active {
-  color: inherit;
-}
-
-a:visited {
-  color: inherit;
-}
-
-a:hover {
-  color: inherit;
 }
 
 .footer-social {
