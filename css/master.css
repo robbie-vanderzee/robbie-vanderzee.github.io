@@ -47,7 +47,6 @@ h1 {
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1.618fr 1fr;
-  grid-template-rows: 6.85rem 1fr 61.8vh;
   gap: 0px 0px;
   grid-template-areas: "header header header""body body body""footer footer footer";
 }
@@ -168,6 +167,7 @@ h1 {
   grid-template-columns: 1fr 1.618fr 1fr;
   grid-template-rows: 1fr;
   gap: 0px 0px;
+  height: 61.8vh;
   grid-template-areas: "footer-left footer-middle footer-right";
   grid-area: footer;
 }
@@ -265,12 +265,19 @@ h1 {
   color: black;
 }
 
+.button.nav.active .button-nav-item {
+  opacity: 1;
+  color: black;
+  transform: scale(1.618);
+  transition: opacity 618ms ease-in;
+}
+
 .button-nav-item {
   opacity: 0;
 }
 
 .button-nav-item:hover {
-  transform: scale(2);
+  opacity: 0;
 }
 
 .section.nav.sticky {
@@ -310,15 +317,8 @@ blockquote.text {
   font-weight: 100;
 }
 
-.section.footer {
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  gap: 0px 0px;
-}
-
-.section.footer.author {
+.section-footer.author {
   text-align: right;
-  padding-right: 1rem;
 }
 
 .footer.footer-middle.center {
