@@ -7,7 +7,6 @@ html, body, .grid-container {
 html, body {
   width: 100%;
   font-family: "Roboto", "Valorant", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-  font-size: 1em;
   line-height: 1.618;
   scroll-behavior: smooth;
 }
