@@ -9,6 +9,7 @@ html, body {
   font-family: "Roboto", "Valorant", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   line-height: 1.618;
   scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
 }
 
 @font-face {
