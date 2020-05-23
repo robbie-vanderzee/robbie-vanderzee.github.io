@@ -1,8 +1,8 @@
 class TextScramble {
-  static chars = 'qwertyuiopasdfghjklzxcvbn';
-  constructor(el) {
+  constructor(el, chars) {
     this.el = el;
     this.update = this.update.bind(this);
+    this.chars = chars;
   }
 
   setText(newText) {
@@ -62,65 +62,69 @@ class TextScramble {
     }
   }
   randomChar() {
-    return TextScramble.chars[Math.floor(Math.random() * TextScramble.chars.length)];
+    return this.chars[Math.floor(Math.random() * this.chars.length)];
   }
 }
 
 
 window.onload = function() {
+
   let scrambleparents = document.getElementsByClassName("scramble-container");
-  let scramblers;
-  for (let parent of scrambleparents) {
-    f(parent);
-  }
-
-  function f(x) {
-    var scrambles = x.getElementsByClassName("scramble");
-    var scramblers = new Map();
-    for (let scrambler of scrambles) {
-      scramblers.set(new TextScramble(scrambler), scrambler.textContent);
-    }
-
-    x.onmouseenter = function() {
-      for (let [scrambler, content] of scramblers) {
-        scrambler.setText(content);
-      }
-    }
-  }
+  var scramble_container_map = new Map();
+  var section_nav_map = new Map();
 
   let sections = document.getElementsByTagName('section');
-  let section_nav_buttons = document.getElementsByClassName('button nav');
+  let nav = document.getElementsByClassName('button nav');
+  for (let i = 0; i < sections.length; i++) {
+    section_nav_map.set(sections[i], nav[i]);
+  }
+
+  for (let parent of scrambleparents) {
+    let scrambles = parent.getElementsByClassName("scramble");
+    let scrambles_ko = parent.getElementsByClassName("scramble-ko");
+    let scramblers = new Map();
+    for (let scrambler of scrambles) {
+      scramblers.set(new TextScramble(scrambler, 'qwertyuiopasdfghjklzxcvbnm'), scrambler.textContent);
+    }
+    for (let scrambler of scrambles_ko) {
+      scramblers.set(new TextScramble(scrambler, '도다것될만보노것다이신을지고력입가을의길지한보려그직하모당그는시행들오르과인길통을신강도야회너해한고는일니기키운게은'), scrambler.textContent);
+    }
+    scramble_container_map.set(parent, scramblers);
+
+    parent.onmouseenter = function() {
+      scramble_parent(parent);
+    };
+  }
   createObserver();
 
-  function createObserver(){
-  	let observer;
-  	let options = {
-  		root: null,
-  		rootMargin: "-50% 0% -50% 0%"
-  	}
-  	observer = new IntersectionObserver(handleIntersect, options);
-  	for(let section of sections){
-  		observer.observe(section);
-  	}
+  function createObserver() {
+    let observer;
+    let options = {
+      root: null,
+      rootMargin: "-50% 0% -50% 0%"
+    };
+    observer = new IntersectionObserver(handleIntersect, options);
+    for (let [section, nav] of section_nav_map) {
+      observer.observe(section);
+    }
   }
 
   function handleIntersect(entries, observer) {
-  	entries.forEach((entry) => {
-      var index = entry.target.getAttribute('num');
-      if(entry.isIntersecting) {
-        var x = section_nav_buttons[index];
-        x.classList.add('active');
-        var scrambles = x.getElementsByClassName("scramble");
-        var scramblers = new Map();
-        for (let scrambler of scrambles) {
-          scramblers.set(new TextScramble(scrambler), scrambler.textContent);
-        }
-        for (let [scrambler, content] of scramblers) {
-            scrambler.setText(content);
-        }
+    entries.forEach((entry) => {
+      let nav_button = section_nav_map.get(entry.target)
+      if (entry.isIntersecting) {
+        nav_button.classList.add('active');
+        scramble_parent(nav_button);
       } else {
-        section_nav_buttons[index].classList.remove('active');
+        nav_button.classList.remove('active');
       }
-  	});
+    });
   }
-}
+
+  function scramble_parent(parent) {
+    let scramblers = scramble_container_map.get(parent);
+    for (let [scrambler, content] of scramblers) {
+      scrambler.setText(content);
+    }
+  }
+};
