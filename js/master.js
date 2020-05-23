@@ -5,6 +5,10 @@ class TextScramble {
     this.chars = chars;
   }
 
+  setText() {
+    setText(this.el.innerText);
+  }
+
   setText(newText) {
     const oldText = this.el.innerText;
     const length = Math.max(oldText.length, newText.length);
@@ -68,8 +72,8 @@ class TextScramble {
 
 
 window.onload = function() {
-
-  let scrambleparents = document.getElementsByClassName("scramble-container");
+  console.log("loaded")
+  var scrambleparents = document.getElementsByClassName("scramble-container");
   var scramble_container_map = new Map();
   var section_nav_map = new Map();
 
@@ -121,9 +125,8 @@ window.onload = function() {
     });
   }
 
-  function scramble_parent(parent) {
-    let scramblers = scramble_container_map.get(parent);
-    for (let [scrambler, content] of scramblers) {
+  async function scramble_parent(parent) {
+    for (let [scrambler, content] of scramble_container_map.get(parent)) {
       scrambler.setText(content);
     }
   }
