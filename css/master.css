@@ -301,6 +301,7 @@ a.nav::after {
 
 video {
   max-width: 100%;
+  outline: none;
 }
 
 blockquote {
