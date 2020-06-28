@@ -1,5 +1,7 @@
 html, body, .grid-container {
   max-height: 100%;
+  min-height: 100%;
+  min-width: 100%;
   margin: auto;
   padding: 0;
 }
@@ -10,6 +12,7 @@ html, body {
   line-height: 1.618;
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
+  font-size: 1vmax;
 }
 
 @font-face {
@@ -46,8 +49,8 @@ h1 {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1.618fr 1fr;
-  gap: 0px 0px;
+  grid-template-columns: minmax(0%, 1fr) minmax(61.8%, 1.618fr) minmax(0%, 1fr);
+  gap: 0 0;
   grid-template-areas: "header header header""body body body""footer footer footer";
 }
 
@@ -126,7 +129,7 @@ h1 {
 
 .header-nav {
   display: grid;
-  grid-template-columns: 9.02% 9.02% 9.02% 9.02% 9.02% 9.02%;
+  grid-template-columns: repeat(auto-fit, minmax(10px, 9.02%));
   margin-left: 2.618rem;
   gap: 0 2.618rem;
   counter-reset: header-nav;
@@ -143,7 +146,7 @@ h1 {
 .body {
   display: grid;
   position: relative;
-  grid-template-columns: 1fr 1.618fr 1fr;
+  grid-template-columns: minmax(0px, 1fr) minmax(100px, 1.618fr) minmax(0px, 1fr);
   grid-template-rows: 1fr;
   gap: 0 0;
   grid-template-areas: "nav section aside";

@@ -72,7 +72,6 @@ class TextScramble {
 
 
 window.onload = function() {
-  console.log("loaded")
   var scrambleparents = document.getElementsByClassName("scramble-container");
   var scramble_container_map = new Map();
   var section_nav_map = new Map();
