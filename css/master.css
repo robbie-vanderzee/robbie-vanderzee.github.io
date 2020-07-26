@@ -466,6 +466,10 @@ h3.title {
   margin-top: -4.24rem;
 }
 
+.header-web-link {
+  color: black;
+  text-decoration: none;
+}
 .section-web-link {
   font-family: Lucida;
   color: black;
