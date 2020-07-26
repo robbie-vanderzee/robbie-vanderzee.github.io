@@ -8,12 +8,40 @@
   <meta name="keywords" content="Robbie VanDerzee, Robert VanDerzee, Robert, Robbie, UVa, CS, Physics">
   <meta name="google-site-verification" content="LwU0TEh9PNrp-MWx4ETCCxdYYdzocteFzJ2ZNscEe8w" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> /robbie-vanderzee/self </title>
+  <title> /robbie-vanderzee/env </title>
   <!-- includes !-->
   <!-- styling !-->
-  <link rel="stylesheet" type="text/css" href="/css/master.css">
+  <style>
+    .environment {
+      display: grid;
+      grid-auto-rows: 1fr;
+      grid-auto-rows: 1fr;
+      max-width: 100%;
+      width: 100%;
+      padding: inherit
+    }
+
+    textarea.environment {
+      font-family: monospace;
+      width: 100%;
+      border: none
+    }
+
+    div.environment {
+      text-align: center
+    }
+
+    div.environment_border {
+      border: 0 none
+    }
+
+    canvas.environment {
+      border: 0 none
+    }
+  </style>
+  <link rel="stylesheet" href="/css/master.css">
   <!-- extern !-->
-  <link rel="stylesheet" type="text/css" href="/highlightjs/default.css">
+  <link rel="stylesheet" href="/highlightjs/default.css">
   <!-- google !-->
   <!-- fonts !-->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -54,9 +82,9 @@
       </div>
       <div class="header-middle">
         <div class="header-nav">
-          <div class="header-nav-item hover-underline-from-center scramble-container"> <a href="../" class="header-nav-link scramble">/self</a>
+          <div class="header-nav-item hover-underline-from-center scramble-container"> <a href="../index.html" class="header-nav-link scramble">/self</a>
           </div>
-          <div class="header-nav-item hover-underline-from-center scramble-container"><a href="../env/andromeda.html" class="header-nav-link scramble">/env</a>
+          <div class="header-nav-item hover-underline-from-center scramble-container"><a href="#" class="header-nav-link scramble">/env</a>
           </div>
           <div class="header-nav-item hover-underline-from-center scramble-container"><a href="../proj/_.html" class="header-nav-link scramble">/proj</a>
           </div>
@@ -78,105 +106,48 @@
       <nav class="nav">
         <div class="section nav sticky">
           <a href="#s000" class="button nav scramble-container">
-            <span class="button-nav-item scramble name">/self</span>
-            <br>
-            <span> <sub class="button-nav-item scramble date"> May 20th, 2020 </sub></span>
-          </a>
-          <a href="#s001" class="button nav scramble-container">
             <span class="button-nav-item scramble name">/env</span>
             <br>
             <span> <sub class="button-nav-item scramble date">July 11th, 2020 </sub></span>
-          </a>
-          <a href="#s002" class="button nav scramble-container">
-            <span class="button-nav-item scramble name">/etc</span>
-            <br>
-            <span> <sub class="button-nav-item scramble date"> May 29th, 2020 </sub></span>
           </a>
         </div>
       </nav>
       <div class="sections">
         <section class="self" id="s000">
-          <h2 class="title"> <span>/self </span> </h2>
+          <h2 class="title"> <span>/env </span> </h2>
           <article class="section">
             <div class="section title">
-              <h3 class="subtitle">the University of Virginia engineering · physics · cs · 2021</h3>
+              <h3 class="subtitle">
+                andromeda is an application engine capable of seemless, high preformance
+                demonstrations that are quick to build and easy to use, all on running in
+                <a href="https://webassembly.org/" class="section-web-link">Web Assembly</a>,
+                compiled directly from native C++ code.
+              </h3>
             </div>
             <div class="section body">
-              <div class="video">
-                <video playsinline autoplay muted loop>
-                  <source src="assets/video/halo-loop-c.mp4" type="video/mp4">
-                </video>
-                <div class="right">Halo Infinite &copy; 2020 MSFT</div>
+              <div class="andromeda">
+                <div>
+                  <figure id=loading style=overflow:visible>
+                    <div class=loading>
+                    </div>
+                  </figure>
+                  <div class=environment id=status>[ Downloading ]</div>
+                  <div class=environment>
+                    <progress hidden id=progress max=100 value=0>
+                    </progress>
+                  </div>
+                </div>
+                <div class=environment_border>
+                  <canvas class=environment id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
+                </div>
+                <div>
+                  <textarea class=environment id=console rows=12 spellcheck=false>
+                  </textarea>
+                </div>
               </div>
               <h5 class="article right"> 000
-                <br><sub> May 20th, 2020 </sub>
+                <br><sub> July 11th, 2020 </sub>
               </h5>
-              <blockquote class="text">
-                Who's to say what's a waste of time? The universe can't allow such things, since that would be bad game design.
-              </blockquote>
-              <div class="paragraph">
-                <h2> Preface </h2>
-                I have absolutely no idea what I'm talking about. I'm not qualified, and to be honest, I don't really care to be; I'm just here to explore the universe while I can (It'd be nice if I made it pass the Earth server). I built this
-                website
-                to showcase that exploration. I strongly believe that what there is to learn about the world through computation and imagination doesn't need fancy words or rigourous technique - it just needs to be explored. So, you may find some of
-                these projects,
-                (maybe even most of them, actually) are grandious, way outside of conventional approach, and in many ways, kind of unscientific; but above all, are projects I made, by myself, from my own ideas, with my passion for learning at the
-                center.
-                <blockquote class="text">
-                  There are no wrong answers, only answers to which you have yet to find the question.
-                </blockquote>
-                <p>
-                  The contents of this self/dir is loosely summarized as:
-                </p>
-                <ul>
-                  <li>my works, like in /env</li>
-                  <li>my achievements, like in /etc</li>
-                  <li>my connections, like in /comm</li>
-                </ul>
-                <p>
-                  and also some random things about myself.
-                </p>
-                If you find something cool that you want to play around with, all my projects are released on github (though sometimes I privatize the most recent versions), so feel free to use them as you like and even contribute to the projects.
-                Hopefully these provide a unique perspective on some interesting
-                problems.
-                <blockquote class="text">
-                  Thinking, after all, is a freedom that only death has the luxury to steal.
-                </blockquote>
-                Let the showcase commence. I try my best to make it appealing. Thanks for looking.
-              </div>
-              <hr class="divider">
-              <div class="paragraph">
-                <h2> Lorem ipsum </h2>
-                <div class="article-img">
-                  <img class="article-img" src="/assets/img/space.jpg" alt="space">
-                  <div class="caption right"> <sub> spestronaut </sub>
-                  </div>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut velit at ante eleifend ornare. Maecenas ut imperdiet tortor, eu fringilla nisi. Phasellus fermentum erat sit amet mi ultrices accumsan eget ac elit. Vivamus volutpat,
-                  urna
-                  sit amet egestas fermentum, purus ligula gravida nunc, vitae convallis urna elit bibendum erat. Nulla facilisi. Nullam et leo congue, ultrices nulla posuere, mattis urna. Vestibulum vel felis id dui ornare finibus. Mauris nec metus
-                  non
-                  massa interdum laoreet fermentum id magna. Pellentesque auctor consequat pellentesque. Pellentesque tincidunt orci venenatis leo molestie, sit amet volutpat quam interdum. Aenean diam purus, varius sed turpis ac, fringilla feugiat
-                  felis.
-                  <h2> Sed at rhoncus </h2>
-                  Sed at rhoncus elit. Nunc mattis accumsan magna in scelerisque. Curabitur vestibulum sem quis consequat condimentum. Cras convallis ac diam ac laoreet. Integer urna arcu, finibus eu sem ac, efficitur dictum nisi. Donec sem sapien,
-                  mollis sit amet diam ac, eleifend luctus risus. Vestibulum efficitur tempor ornare. Mauris euismod molestie diam a tincidunt. Suspendisse mi nunc, tincidunt a dictum vitae, sollicitudin eu lorem. Maecenas placerat aliquet elit.
-                  Phasellus blandit justo ac viverra lobortis.
-                </div>
-                <hr class="divider">
-                <h4 class="code-block center">example code</h4>
-                <pre><code class="language-c++">
-                template&lt;class fwd_it, class compare = std::less&lt;&gt;&gt;
-                void quick_sort(fwd_it first, fwd_it last, compare cmp = compare{})
-                {
-                    auto const n = std::distance(first, last);
-                    if (n &lt;= 1) return;
-                    auto const pivot = std::next(first, n / 2);
-                    std::nth_element(first, pivot, last, cmp);
-                    quick_sort(first, pivot, cmp);
-                    quick_sort(pivot, last, cmp);
-                }
-             </code></pre>
-              </div>
               <div class="section-footer author">
                 <span> /init · May 16th, 2020 · /rsv </span>
               </div>
@@ -185,52 +156,6 @@
               </div>
               <div class="section-footer author">
                 <span> /lock · May 20th, 2020 · /rsv </span>
-              </div>
-            </div>
-          </article>
-        </section>
-
-        <section class="env" id="s001">
-          <h2 class="title"> /env </h2>
-          <article class="section">
-            <div class="section title">
-              <h3 class="subtitle"> andromeda, a portable demonstrations engine </h3>
-            </div>
-            <div class="section body">
-              <h5 class="article right"> 001
-                <br><sub> July 11th, 2020 </sub>
-              </h5>
-              <div class="paragraph">
-                <p>
-                  andromeda is an application engine capable of seemless, high preformance
-                  demonstrations that are quick to build and easy to use.
-                </p>
-              </div>
-
-              <div class="section-footer author">
-                <span> /init · July 11th, 2020 · /rsv </span>
-              </div>
-            </div>
-          </article>
-        </section>
-        <section class="etc" id="s002">
-          <h2 class="title"> /etc </h2>
-          <article class="section">
-            <div class="section title">
-              <h3 class="subtitle"> andromeda, a portable demonstrations engine </h3>
-            </div>
-            <div class="section body">
-              <h5 class="article right"> 002
-                <br><sub> May 29th, 2020 </sub>
-              </h5>
-              <div class="paragraph">
-                <p>
-                  andromeda is an application engine capable of seemless, high preformance
-                  demonstrations that are quick to build and easy to use.
-                </p>
-              </div>
-              <div class="section-footer author">
-                <span> /init · May 29th, 2020 · /rsv </span>
               </div>
             </div>
           </article>
@@ -299,6 +224,51 @@
     </div>
     <div class="footer-right"></div>
   </footer>
+  <script>
+    var statusElement = document.getElementById("status"),
+      progressElement = document.getElementById("progress"),
+      loadingElement = document.getElementById("loading"),
+      Module = {
+        preRun: [],
+        postRun: [],
+        print: function() {
+          var e = document.getElementById("console");
+          return e && (e.value = ""),
+            function(t) {
+              arguments.length > 1 && (t = Array.prototype.slice.call(arguments).join(" ")), console.log(t), e && (e.value += t + "\n", e.scrollTop = e.scrollHeight)
+            }
+        }(),
+        printErr: function(e) {
+          arguments.length > 1 && (e = Array.prototype.slice.call(arguments).join(" ")), console.error(e)
+        },
+        canvas: function() {
+          var e = document.getElementById("canvas");
+          return e.addEventListener("webglcontextlost", (function(e) {
+            alert("WebGL context lost. You will need to reload the page."), e.preventDefault()
+          }), !1), e
+        }(),
+        setStatus: function(e) {
+          if (Module.setStatus.last || (Module.setStatus.last = {
+              time: Date.now(),
+              text: ""
+            }), e !== Module.setStatus.last.text) {
+            var t = e.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/),
+              n = Date.now();
+            t && n - Module.setStatus.last.time < 30 || (Module.setStatus.last.time = n, Module.setStatus.last.text = e, t ? (e = t[1], progressElement.value = 100 * parseInt(t[2]), progressElement.max = 100 * parseInt(t[4]), progressElement
+              .hidden = !1, loadingElement.hidden = !1) : (progressElement.value = null, progressElement.max = null, progressElement.hidden = !0, e || (loadingElement.hidden = !0)), statusElement.innerHTML = e)
+          }
+        },
+        totalDependencies: 0,
+        monitorRunDependencies: function(e) {
+          this.totalDependencies = Math.max(this.totalDependencies, e), Module.setStatus(e ? "[ Initializing module dependencies ] (" + (this.totalDependencies - e) + "/" + this.totalDependencies + ")" : " [ Loaded dependencies ] ")
+        }
+      };
+    Module.setStatus("[ Downloading ]"), window.onerror = function() {
+      Module.setStatus("Exception thrown, see JavaScript console"), loadingElement.style.display = "none", Module.setStatus = function(e) {
+        e && Module.printErr("[post-exception status] " + e)
+      }
+    }
+  </script>
+  <script async src=andromeda.js></script>
 </body>
-
 </html>
