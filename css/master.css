@@ -86,8 +86,8 @@ h1 {
   content: "";
   position: absolute;
   z-index: -1;
-  left: 50%;
-  right: 50%;
+  left: 51%;
+  right: 51%;
   bottom: 0;
   background: #debe22;
   height: 0.236rem;
