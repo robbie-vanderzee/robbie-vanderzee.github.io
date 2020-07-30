@@ -111,6 +111,21 @@ h1 {
   }
 }
 
+
+.float {
+  animation: float-frames 6854ms infinite alternate;
+  animation-timing-function: cubic-bezier(0.38, 0, 0.618, 1.0);
+}
+
+@keyframes float-frames {
+  0%, 100% {
+    transform: translateY(38px);
+  }
+  38% {
+    transform: translateY(-38px);
+  }
+}
+
 .header-left-divider {
   display: grid;
   grid-template-columns: 1fr;
