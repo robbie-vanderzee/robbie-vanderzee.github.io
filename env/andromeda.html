@@ -18,25 +18,26 @@
       grid-auto-rows: 1fr;
       max-width: 100%;
       width: 100%;
-      padding: inherit
+      padding: inherit;
     }
 
     textarea.environment {
       font-family: monospace;
       width: 100%;
-      border: none
+      border: none;
     }
 
     div.environment {
-      text-align: center
+      text-align: center;
     }
 
     div.environment_border {
-      border: 0 none
+      border: 0px none;
     }
 
+    /* the canvas *must not* have any border or padding, or mouse coords will be wrong */
     canvas.environment {
-      border: 0 none
+      border: 0px none;
     }
   </style>
   <link rel="stylesheet" href="/css/master.css">
@@ -98,7 +99,7 @@
       </div>
       <div class="header-right">
         <div class="header-info">
-          <div class="header-info-item hover-underline-from-center scramble-container"><a href="/assets/files/vanderzee_robert_s.pdf" target="_blank" rel="noopener noreferrer"  class="header-info-link scramble">/info</a></div>
+          <div class="header-info-item hover-underline-from-center scramble-container"><a href="/assets/files/vanderzee_robert_s.pdf" target="_blank" rel="noopener noreferrer" class="header-info-link scramble">/info</a></div>
         </div>
       </div>
     </header>
@@ -127,22 +128,22 @@
             <div class="section body">
               <div class="andromeda">
                 <div>
-                  <figure id=loading style=overflow:visible>
-                    <div class=loading>
-                    </div>
-                  </figure>
-                  <div class=environment id=status>[ Downloading ]</div>
-                  <div class=environment>
-                    <progress hidden id=progress max=100 value=0>
-                    </progress>
-                  </div>
-                </div>
-                <div class=environment_border>
-                  <canvas class=environment id=canvas oncontextmenu=event.preventDefault() tabindex=-1></canvas>
+                  <input class="float-right button" type="button" value="Fullscreen" onclick="Module.requestFullscreen(0,1)">
                 </div>
                 <div>
-                  <textarea class=environment id=console rows=1 spellcheck=false>
-                  </textarea>
+                  <figure style="overflow:visible;" id="loading">
+                    <div class="loading"></div>
+                  </figure>
+                  <div class="environment" id="status">[ Downloading ]</div>
+                  <div class="environment">
+                    <progress value="0" max="100" id="progress"></progress>
+                  </div>
+                </div>
+                <div class="environment_border">
+                  <canvas class="environment" id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+                </div>
+                <div>
+                  <textarea class="environment" id="console" rows="7" spellcheck="false"></textarea>
                 </div>
               </div>
               <h5 class="article right"> 000
@@ -225,50 +226,88 @@
     <div class="footer-right"></div>
   </footer>
   <script>
-    var statusElement = document.getElementById("status"),
-      progressElement = document.getElementById("progress"),
-      loadingElement = document.getElementById("loading"),
-      Module = {
-        preRun: [],
-        postRun: [],
-        print: function() {
-          var e = document.getElementById("console");
-          return e && (e.value = ""),
-            function(t) {
-              arguments.length > 1 && (t = Array.prototype.slice.call(arguments).join(" ")), console.log(t), e && (e.value += t + "\n", e.scrollTop = e.scrollHeight)
-            }
-        }(),
-        printErr: function(e) {
-          arguments.length > 1 && (e = Array.prototype.slice.call(arguments).join(" ")), console.error(e)
-        },
-        canvas: function() {
-          var e = document.getElementById("canvas");
-          return e.addEventListener("webglcontextlost", (function(e) {
-            alert("WebGL context lost. You will need to reload the page."), e.preventDefault()
-          }), !1), e
-        }(),
-        setStatus: function(e) {
-          if (Module.setStatus.last || (Module.setStatus.last = {
-              time: Date.now(),
-              text: ""
-            }), e !== Module.setStatus.last.text) {
-            var t = e.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/),
-              n = Date.now();
-            t && n - Module.setStatus.last.time < 30 || (Module.setStatus.last.time = n, Module.setStatus.last.text = e, t ? (e = t[1], progressElement.value = 100 * parseInt(t[2]), progressElement.max = 100 * parseInt(t[4]), progressElement
-              .hidden = !1, loadingElement.hidden = !1) : (progressElement.value = null, progressElement.max = null, progressElement.hidden = !0, e || (loadingElement.hidden = !0)), statusElement.innerHTML = e)
+    var statusElement = document.getElementById('status');
+    var progressElement = document.getElementById('progress');
+    var loadingElement = document.getElementById('loading');
+
+    var Module = {
+      preRun: [],
+      postRun: [],
+      print: (function() {
+        var consoleElement = document.getElementById('console');
+        if (consoleElement) consoleElement.value = ''; // clear browser cache
+        return function(text) {
+          if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+          // These replacements are necessary if you render to raw HTML
+          //text = text.replace(/&/g, "&amp;");
+          //text = text.replace(/</g, "&lt;");
+          //text = text.replace(/>/g, "&gt;");
+          //text = text.replace('\n', '<br>', 'g');
+          console.log(text);
+          if (consoleElement) {
+            consoleElement.value += text + "\n";
+            consoleElement.scrollTop = consoleElement.scrollHeight; // focus on bottom
           }
-        },
-        totalDependencies: 0,
-        monitorRunDependencies: function(e) {
-          this.totalDependencies = Math.max(this.totalDependencies, e), Module.setStatus(e ? "[ Initializing module dependencies ] (" + (this.totalDependencies - e) + "/" + this.totalDependencies + ")" : " [ Loaded dependencies ] ")
+        };
+      })(),
+      printErr: function(text) {
+        if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+        console.error(text);
+      },
+      canvas: (function() {
+        var canvas = document.getElementById('canvas');
+
+        // As a default initial behavior, pop up an alert when webgl context is lost. To make your
+        // application robust, you may want to override this behavior before shipping!
+        // See http://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15.2
+        canvas.addEventListener("webglcontextlost", function(e) {
+          alert('WebGL context lost. You will need to reload the page.');
+          e.preventDefault();
+        }, false);
+
+        return canvas;
+      })(),
+      setStatus: function(text) {
+        if (!Module.setStatus.last) Module.setStatus.last = {
+          time: Date.now(),
+          text: ''
+        };
+        if (text === Module.setStatus.last.text) return;
+        var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+        var now = Date.now();
+        if (m && now - Module.setStatus.last.time < 30) return; // if this is a progress update, skip it if too soon
+        Module.setStatus.last.time = now;
+        Module.setStatus.last.text = text;
+        if (m) {
+          text = m[1];
+          progressElement.value = parseInt(m[2]) * 100;
+          progressElement.max = parseInt(m[4]) * 100;
+          progressElement.hidden = false;
+          loadingElement.hidden = false;
+        } else {
+          progressElement.value = null;
+          progressElement.max = null;
+          progressElement.hidden = true;
+          if (!text) loadingElement.hidden = true;
         }
-      };
-    Module.setStatus("[ Downloading ]"), window.onerror = function() {
-      Module.setStatus("Exception thrown, see JavaScript console"), loadingElement.style.display = "none", Module.setStatus = function(e) {
-        e && Module.printErr("[post-exception status] " + e)
+        statusElement.innerHTML = text;
+      },
+      totalDependencies: 0,
+      monitorRunDependencies: function(left) {
+        this.totalDependencies = Math.max(this.totalDependencies, left);
+        Module.setStatus(left ? '[ Initializing module dependencies ] (' + (this.totalDependencies - left) + '/' + this.totalDependencies + ')' : ' [ Loaded dependencies ] ');
       }
-    }
+    };
+    Module.setStatus('[ Downloading ]');
+    window.onerror = function() {
+      Module.setStatus('Exception thrown, see JavaScript console');
+      loadingElement.style.display = 'none';
+      Module.setStatus = function(text) {
+        if (text) Module.printErr('[post-exception status] ' + text);
+      };
+    };
   </script>
   <script async src=andromeda.js></script>
 </body>
+
 </html>

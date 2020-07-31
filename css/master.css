@@ -263,6 +263,28 @@ h1 {
   top: 0;
 }
 
+input.button {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.618;
+  font-family: valorant;
+  border: none;
+  background-color: inherit;
+}
+
+input.button {
+  opacity: 0.618;
+  height: 100%;
+  transition-duration: 382ms;
+  transition-property: transform;
+}
+
+input.button:hover {
+    opacity: 1;
+    color: black;
+    transform: scale(1.618);
+}
+
 .button.nav {
   position: relative;
   display: block;
@@ -346,14 +368,16 @@ blockquote.text {
   padding: 1rem 1rem 1rem 1rem;
 }
 
-.right {
-  text-align: right;
+.float-right {
+  float: right;
 }
 
 .center {
-  justify-self: center;
-  align-self: center;
   text-align: center;
+}
+
+.right {
+  text-align: right;
 }
 
 .caption {
