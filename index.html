@@ -96,10 +96,10 @@
       </nav>
       <div class="sections">
         <section class="self" id="s000">
-          <h2 class="title"><a class ="header-web-link" href="/"><span>/self</span></a></h2>
+          <h2 class="title"><a class="header-web-link" href="/"><span>/self</span></a></h2>
           <article class="section">
             <div class="section title">
-              <h3 class="subtitle">the University of Virginia engineering · physics · cs · 2021</h3>
+              <h3 class="subtitle">University of Virginia engineering · physics · cs · 2021</h3>
             </div>
             <div class="section body">
               <div class="video">
@@ -146,52 +146,76 @@
               </div>
               <hr class="divider">
               <div class="paragraph">
-                <h2> Lorem ipsum </h2>
+                <h2> Exploration </h2>
                 <div class="article-img">
                   <img class="article-img" src="/assets/img/space.jpg" alt="space">
-                  <div class="caption right"> <sub> spestronaut </sub>
+                  <div class="caption right"> <sub> Dabin - <strong>Hold</strong>/ She was &copy 2015</sub>
                   </div>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut velit at ante eleifend ornare. Maecenas ut imperdiet tortor, eu fringilla nisi. Phasellus fermentum erat sit amet mi ultrices accumsan eget ac elit. Vivamus volutpat,
-                  urna
-                  sit amet egestas fermentum, purus ligula gravida nunc, vitae convallis urna elit bibendum erat. Nulla facilisi. Nullam et leo congue, ultrices nulla posuere, mattis urna. Vestibulum vel felis id dui ornare finibus. Mauris nec metus
-                  non
-                  massa interdum laoreet fermentum id magna. Pellentesque auctor consequat pellentesque. Pellentesque tincidunt orci venenatis leo molestie, sit amet volutpat quam interdum. Aenean diam purus, varius sed turpis ac, fringilla feugiat
-                  felis.
-                  <h2> Sed at rhoncus </h2>
-                  Sed at rhoncus elit. Nunc mattis accumsan magna in scelerisque. Curabitur vestibulum sem quis consequat condimentum. Cras convallis ac diam ac laoreet. Integer urna arcu, finibus eu sem ac, efficitur dictum nisi. Donec sem sapien,
-                  mollis sit amet diam ac, eleifend luctus risus. Vestibulum efficitur tempor ornare. Mauris euismod molestie diam a tincidunt. Suspendisse mi nunc, tincidunt a dictum vitae, sollicitudin eu lorem. Maecenas placerat aliquet elit.
-                  Phasellus blandit justo ac viverra lobortis.
+                  <blockquote class="text">
+                    Being wrong is alright. Not knowing is alright. That's how you learn. Don't let someone who knows make you feel like you'll <i>never</i> know.
+                  </blockquote>
+                  <h2> Interests </h2>
+                  <h3> Prime Numbers and arithemetic sequences </h2>
+                    <div class="paragraph">
+                      One of my hobby projects is exploring how conventional numbers behave, but also how our concept of them could change, perhaps for the better practically. There are all sorts of interesting ideas out there, but what ties
+                      different
+                      interpretations of numerical concepts together seems to be hidden inside primality. Prime numbers bring forth the beauty in detail and seem, at first, astonishingly simple. Consider the following C++ function, which represents
+                      the
+                      <i>Collatz</i> map. Collatz is a historical problem of which "current mathematics are not ready to solve", in which the function repeats forever following two simple rules: If the number is odd, multiply by 3 and add 1;
+                      otherwise, divide it by 2.
+                    </div>
                 </div>
                 <hr class="divider">
-                <h4 class="code-block center">example code</h4>
-                <pre><code class="language-c++">
-                template&lt;class fwd_it, class compare = std::less&lt;&gt;&gt;
-                void quick_sort(fwd_it first, fwd_it last, compare cmp = compare{})
-                {
-                    auto const n = std::distance(first, last);
-                    if (n &lt;= 1) return;
-                    auto const pivot = std::next(first, n / 2);
-                    std::nth_element(first, pivot, last, cmp);
-                    quick_sort(first, pivot, cmp);
-                    quick_sort(pivot, last, cmp);
-                }
-             </code></pre>
+                <h4 class="code-block center">A Collatz function</h4>
+                <pre>
+                  <code class="language-c++">
+                  #include &lt;iostream&gt;
+                  unsigned int collatz(unsigned int n)
+                  {
+                      if (n == 1) return 1;
+                      std::cout &lt;&lt; n &lt;&lt; '\n';
+                      n % 2 == 1 ? collatz(n/2) : collatz(3*n+1);
+                  }
+                  </code>
+              </pre>
+                <div class="paragraph">
+                  It appears as though the resulting length of output of Collatz is random. Take Collatz(9), for example: {9, 28, 14, 7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1}. By definition, we see powers of two will collapse
+                  directly, but it also seems that all other numbers eventually collapse to a power of 2, and then to the same ending cycle 4, 2, 1. In /proj you can see more about this and related number theory exploration.
+                </div>
+                <h3> Graphics and Visualization </h3>
+                <div class="paragraph">
+                  I love turning things into pictures and geometry and visually evolving systems. Visuals are just excellent about communicating vast amounts of information in unique ways, and often it can vary to a different form but it is easy to
+                  see that it is still fundamentally the same: like a sphere growing in size, or a system of orbiting planets. With the advent of algebraic understanding, people have gotten increasingly good at making statements, and have abandoned
+                  the more expensive but much more useful techinque of demonstrating something: seeing. And of course, we want things to look beautiful! In /env I'm working on building a portable engine to do so. Here's an example of something
+                  beautiful straight from mathematics, it's fun to think about whats going on:
+                </div>
+                <div class="video">
+                  <div class="center">
+                    <video playsinline autoplay muted loop>
+                      <source src="assets/video/prime_cycle.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="caption right"> <sub> Prime's cradle </sub>
+                  </div>
+                  <div class="paragraph">
+                    You don't see it... until you do. So much to try to understand! Thanks, universe!
+                  </div>
+                  <div class="paragraph">
+                    Eventually, I want to port this sort of thing to /env, but for now it will exist in an inferior, but still awesome form.
+                  </div>
+                </div>
+                <div class="section-footer author">
+                  <span> /init · May 16th, 2020 · /rsv </span>
+                </div>
+                <div class="section-footer author">
+                  <span> /rev · September 9th, 2020 · /rsv </span>
+                </div>
               </div>
-              <div class="section-footer author">
-                <span> /init · May 16th, 2020 · /rsv </span>
-              </div>
-              <div class="section-footer author">
-                <span> /rev · May 17th, 2020 · /rsv </span>
-              </div>
-              <div class="section-footer author">
-                <span> /lock · May 20th, 2020 · /rsv </span>
-              </div>
-            </div>
           </article>
         </section>
 
         <section class="env" id="s001">
-          <h2 class="title"><a class ="header-web-link" href="/env/andromeda.html"><span>/env</span></a></h2>
+          <h2 class="title"><a class="header-web-link" href="/env/andromeda.html"><span>/env</span></a></h2>
           <article class="section">
             <div class="section title">
               <h3 class="subtitle"> andromeda, a portable demonstrations engine </h3>
@@ -202,11 +226,14 @@
               </h5>
               <div class="paragraph">
                 <p>
-                  andromeda is an application engine capable of seemless, high performance
-                  demonstrations that are quick to build and easy to use.
+                  andromeda is an application engine capable of seemless, high performance, and portable graphics
+                  demonstrations that are quick to build but also beautiful. There is a secret demonstration available currently on under 001 /env, but the future release is current private. A demonstration of A* with various heurisitics will be
+                  posted soon.
+                </p>
+                <p>
+                  rendering is accomplished with the <a href="https://www.khronos.org/vulkan/" class="section-web-link">Vulkan API</a>, which is the next generation toolchain for interfacing with graphics hardware.
                 </p>
               </div>
-
               <div class="section-footer author">
                 <span> /init · July 11th, 2020 · /rsv </span>
               </div>
@@ -214,7 +241,7 @@
           </article>
         </section>
         <section class="etc" id="s002">
-          <h2 class="title"><a class ="header-web-link" href="/etc/gallery.html"><span>/etc</span></a></h2>
+          <h2 class="title"><a class="header-web-link" href="/etc/gallery.html"><span>/etc</span></a></h2>
           <article class="section">
             <div class="section title">
               <h3 class="subtitle"> the rest of my /life, compiled achievements</h3>
@@ -225,7 +252,9 @@
               </h5>
               <div class="paragraph">
                 <p>
-                  A gallery of my competitve achiements.
+                  A gallery of my competitve achiements. I've been playing competitve games since around highschool, and achieved high percentiles in many. I spent quite a bit of time playing these games, but I've most recently relaxed that. I
+                  started playing Chess in 2019 since I became interested in building my own Chess engine. This page is sort of a trophy showcase for employers (please hire me if you're Microsoft!), but I'm very proud of what I learned playing these
+                  games.
                 </p>
               </div>
               <div class="section-footer author">
