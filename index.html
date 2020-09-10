@@ -174,7 +174,7 @@
                   {
                       if (n == 1) return 1;
                       std::cout &lt;&lt; n &lt;&lt; '\n';
-                      n % 2 == 1 ? collatz(n/2) : collatz(3*n+1);
+                      n % 2 == 1 ? collatz(3*n+1) : collatz(n/2);
                   }
                   </code>
               </pre>
